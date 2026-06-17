@@ -19,13 +19,21 @@ app.add_middleware(
 )
 
 AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
-AIRTABLE_BASE  = os.getenv("AIRTABLE_BASE",  "appbi0qh1QhTzFVg0")
+AIRTABLE_BASE  = os.getenv("AIRTABLE_BASE",  "appLVSEg1Y2zIwvuM")
 AIRTABLE_TABLE = os.getenv("AIRTABLE_TABLE", "Pqrs")
 
 
 @app.get("/")
 async def health():
     return {"status": "ok"}
+
+@app.get("/debug")
+async def debug():
+    return {
+        "base":  AIRTABLE_BASE,
+        "table": AIRTABLE_TABLE,
+        "token": AIRTABLE_TOKEN[:12] + "..." if AIRTABLE_TOKEN else "NO CONFIGURADO",
+    }
 
 
 @app.post("/pqrs")
