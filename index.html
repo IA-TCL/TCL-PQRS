@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PQRS — TCL Asesores</title>
+    <meta name="description" content="Canal oficial para peticiones, quejas, reclamos y sugerencias. Tu opinión es importante.">
+    <link rel="icon" type="image/png" href="Imagenes/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="https://tclasesores.com" class="logo">
+            <img src="Imagenes/logo.png" alt="TCL Asesores">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="https://tclasesores.com">Inicio</a></li>
+                <li><a href="https://tclasesores.com/servicios/">Servicios <span class="nav-arrow">▾</span></a></li>
+                <li><a href="https://tclasesores.com/acerca-de/">Quienes Somos</a></li>
+                <li><a href="https://tclasesores.com/equipo/">Equipo</a></li>
+                <li><a href="https://tclasesores.com/blog/">Blog</a></li>
+                <li><a href="https://tclasesores.com/contacto/">Contacto</a></li>
+                <li><a href="https://tclasesores.com/pqrs/" class="active">PQRS</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <!-- Búsqueda -->
+            <button class="hdr-icon-btn" aria-label="Buscar">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            <span class="hdr-sep"></span>
+            <!-- Contacto -->
+            <div class="hdr-contact">
+                <div class="hdr-contact-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <div>
+                    <span class="hdr-contact-label">Contáctanos</span>
+                    <a href="tel:+573052841365" class="hdr-contact-num">(+57) 305 2841365</a>
+                </div>
+            </div>
+            <span class="hdr-sep"></span>
+            <!-- Menú -->
+            <button class="hdr-icon-btn" aria-label="Menú">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>PQRS</h1>
+        <p class="breadcrumb">
+            <a href="https://tclasesores.com">TCL</a>
+            <span class="breadcrumb-sep"> - </span>
+            <span class="breadcrumb-current">PQRS</span>
+        </p>
+    </div>
+</section>
+
+<!-- TIPOS -->
+<section class="tipo-section">
+    <div class="tipo-section-inner">
+        <div style="text-align:center">
+            <span class="section-label section-label--center">Canales de atención</span>
+            <h2 class="section-title">¿Qué tipo de solicitud tienes?</h2>
+            <p class="section-desc">Identifica tu caso y selecciónalo en el formulario para que podamos darte la atención adecuada.</p>
+        </div>
+        <div class="tipo-grid">
+            <!-- Petición -->
+            <div class="tipo-card fade-up" data-tipo="Petición">
+                <span class="tipo-num">01</span>
+                <span class="tipo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </span>
+                <div class="tipo-card-body">
+                    <h3>Petición</h3>
+                    <p>Solicita información o que realicemos una acción específica en tu nombre</p>
+                    <span class="tipo-card-action">Radicar petición →</span>
+                </div>
+            </div>
+            <!-- Queja -->
+            <div class="tipo-card fade-up" data-tipo="Queja">
+                <span class="tipo-num">02</span>
+                <span class="tipo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <div class="tipo-card-body">
+                    <h3>Queja</h3>
+                    <p>Expresa tu inconformidad con un servicio o la atención recibida</p>
+                    <span class="tipo-card-action">Radicar queja →</span>
+                </div>
+            </div>
+            <!-- Reclamo -->
+            <div class="tipo-card fade-up" data-tipo="Reclamo">
+                <span class="tipo-num">03</span>
+                <span class="tipo-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </span>
+                <div class="tipo-card-body">
+                    <h3>Reclamo</h3>
+                    <p>Exige la garantía de un derecho que consideras vulnerado</p>
+                    <span class="tipo-card-action">Radicar reclamo →</span>
+                </div>
+            </div>
+            <!-- Sugerencia -->
+            <div class="tipo-card fade-up" data-tipo="Sugerencia">
+                <span class="tipo-num">04</span>
+                <span class="tipo-icon">
+                    <svg viewBox="0 0 24 24"><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+                </span>
+                <div class="tipo-card-body">
+                    <h3>Sugerencia</h3>
+                    <p>Propón ideas para mejorar nuestros procesos y servicios</p>
+                    <span class="tipo-card-action">Enviar sugerencia →</span>
+                </div>
+            </div>
+            <!-- Felicitación -->
+            <div class="tipo-card fade-up" data-tipo="Felicitación">
+                <span class="tipo-num">05</span>
+                <span class="tipo-icon">
+                    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </span>
+                <div class="tipo-card-body">
+                    <h3>Felicitación</h3>
+                    <p>Reconoce y comparte una experiencia positiva con nuestro equipo</p>
+                    <span class="tipo-card-action">Enviar felicitación →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN -->
+<section class="main-section" id="formulario">
+    <div class="main-inner">
+
+        <!-- Info -->
+        <div class="info-col">
+            <span class="section-label">Por qué elegirnos</span>
+            <h2>Tu solicitud<br>en buenas manos</h2>
+            <p>TCL Asesores está comprometida con la satisfacción de nuestros clientes. Este canal es tu vía directa para asegurar que tu voz sea escuchada y tu inquietud resuelta con profesionalismo.</p>
+
+            <ul class="features-list">
+                <li>
+                    <span class="feat-icon">✓</span>
+                    <div class="feat-body">
+                        <span class="feat-title">Respuesta garantizada en máximo 15 días hábiles</span>
+                        <div class="feat-detail">Según la normativa colombiana de atención al ciudadano</div>
+                    </div>
+                    <span class="feat-arrow">→</span>
+                </li>
+                <li>
+                    <span class="feat-icon">✓</span>
+                    <div class="feat-body">
+                        <span class="feat-title">Confirmación inmediata por correo electrónico</span>
+                        <div class="feat-detail">Con número de radicado único para seguimiento</div>
+                    </div>
+                    <span class="feat-arrow">→</span>
+                </li>
+                <li>
+                    <span class="feat-icon">✓</span>
+                    <div class="feat-body">
+                        <span class="feat-title">Datos tratados conforme a normas de protección</span>
+                        <div class="feat-detail">Cumplimos con la Ley 1581 de 2012 de habeas data</div>
+                    </div>
+                    <span class="feat-arrow">→</span>
+                </li>
+                <li>
+                    <span class="feat-icon">✓</span>
+                    <div class="feat-body">
+                        <span class="feat-title">Cada solicitud queda registrada y es monitoreada</span>
+                        <div class="feat-detail">Seguimiento en tiempo real al estado de tu caso</div>
+                    </div>
+                    <span class="feat-arrow">→</span>
+                </li>
+            </ul>
+
+            <div class="cta-box">
+                <div class="cta-box-title">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    ¿Prefieres contactarnos directamente?
+                </div>
+                <a href="tel:+573052841365" class="cta-contact-item" data-copy="+57 305 2841365">
+                    <span class="cta-contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.71 12.5 19.79 19.79 0 0 1 1.65 3.9 2 2 0 0 1 3.62 1.72h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.32a16 16 0 0 0 6.29 6.29l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </span>
+                    <span class="cta-copy-text">(+57) 305 2841365</span>
+                    <svg class="cta-copy-hint" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </a>
+                <a href="mailto:info@tclasesores.com" class="cta-contact-item" data-copy="info@tclasesores.com">
+                    <span class="cta-contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </span>
+                    <span class="cta-copy-text">info@tclasesores.com</span>
+                    <svg class="cta-copy-hint" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <div class="form-wrap">
+            <div class="form-header">
+                <h2 class="form-title">Radica tu solicitud</h2>
+                <p class="form-subtitle">Los campos marcados con * son obligatorios</p>
+            </div>
+            <!-- PANTALLA DE ÉXITO -->
+            <div id="success-screen" class="success-screen" style="display:none">
+
+                <!-- Checkmark animado -->
+                <div class="ss-check-wrap">
+                    <svg class="ss-check-svg" viewBox="0 0 64 64">
+                        <circle class="ss-bg-circle" cx="32" cy="32" r="32"/>
+                        <polyline class="ss-tick" points="18,33 27,43 46,22" fill="none"/>
+                    </svg>
+                </div>
+
+                <!-- Título -->
+                <div class="ss-heading">
+                    <h3 class="ss-title">Tu solicitud fue registrada</h3>
+                    <p class="ss-sub">Recibirás confirmación en tu correo electrónico</p>
+                </div>
+
+                <!-- Radicado -->
+                <div class="ss-radicado-box">
+                    <span class="ss-radicado-label">Número de radicado</span>
+                    <div class="ss-radicado-row">
+                        <span class="ss-radicado-num" id="ss-radicado">—</span>
+                        <button type="button" class="ss-copy-btn" id="ss-copy-btn" aria-label="Copiar radicado">
+                            <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        </button>
+                    </div>
+                    <span class="ss-radicado-hint">Guarda este número para dar seguimiento a tu caso</span>
+                </div>
+
+                <!-- Próximos pasos -->
+                <div class="ss-next">
+                    <div class="ss-next-label"><span>Próximos pasos</span></div>
+                    <ul class="ss-steps">
+                        <li>
+                            <span class="ss-step-icon ss-icon-mail">
+                                <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                            </span>
+                            <div class="ss-step-body">
+                                <strong>Correo de confirmación</strong>
+                                <span>Revisa tu bandeja con el detalle completo</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="ss-step-icon ss-icon-clock">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                            </span>
+                            <div class="ss-step-body">
+                                <strong>Respuesta en 15 días hábiles</strong>
+                                <span>Nuestro equipo revisará y atenderá tu caso</span>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="ss-step-icon ss-icon-shield">
+                                <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </span>
+                            <div class="ss-step-body">
+                                <strong>Datos protegidos</strong>
+                                <span>Ley 1581 de 2012 — Habeas Data</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <button type="button" class="btn-submit" id="btn-nueva">← Volver a la página anterior</button>
+            </div>
+
+            <div class="form-body">
+
+            <div id="draft-notice" class="draft-notice" style="display:none">
+                <span>Borrador recuperado automáticamente.</span>
+                <button type="button" id="draft-discard">Descartar</button>
+            </div>
+
+            <div id="msg-ok" class="alert alert-ok">
+                ✓ Tu solicitud ha sido enviada exitosamente. Recibirás confirmación en tu correo.
+            </div>
+            <div id="msg-err" class="alert alert-err"></div>
+
+            <form id="pqrs-form" novalidate>
+                <div class="form-grid">
+
+                    <!-- Sección 1 -->
+                    <div class="form-section-sep">
+                        <span class="form-section-num">01</span>
+                        <div class="form-section-text">
+                            <span class="form-section-title">Datos de contacto</span>
+                            <span class="form-section-sub">Información para responderte</span>
+                        </div>
+                        <span class="form-section-line"></span>
+                    </div>
+
+                    <div class="f">
+                        <div class="f-head">
+                            <label class="f-label" for="nombres">Nombres</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Nombre o nombres completos</p>
+                        <div class="input-wrap">
+                            <input type="text" id="nombres" name="nombres" required autocomplete="given-name">
+                            <span class="v-icon">✓</span>
+                        </div>
+                    </div>
+
+                    <div class="f f-right">
+                        <div class="f-head">
+                            <label class="f-label" for="apellidos">Apellidos</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Apellidos completos</p>
+                        <div class="input-wrap">
+                            <input type="text" id="apellidos" name="apellidos" required autocomplete="family-name">
+                            <span class="v-icon">✓</span>
+                        </div>
+                    </div>
+
+                    <div class="f">
+                        <div class="f-head">
+                            <label class="f-label" for="correo">Correo electrónico</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Recibirás la respuesta aquí</p>
+                        <div class="input-wrap">
+                            <input type="email" id="correo" name="correo" required autocomplete="email">
+                            <span class="v-icon">✓</span>
+                        </div>
+                    </div>
+
+                    <div class="f f-right">
+                        <div class="f-head">
+                            <label class="f-label" for="celular">Celular</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Número de contacto</p>
+                        <div class="input-wrap">
+                            <input type="tel" id="celular" name="celular" required autocomplete="tel">
+                            <span class="v-icon">✓</span>
+                        </div>
+                    </div>
+
+                    <!-- Sección 2 -->
+                    <div class="form-section-sep">
+                        <span class="form-section-num">02</span>
+                        <div class="form-section-text">
+                            <span class="form-section-title">Tu solicitud</span>
+                            <span class="form-section-sub">Cuéntanos qué necesitas</span>
+                        </div>
+                        <span class="form-section-line"></span>
+                    </div>
+
+                    <div class="f full">
+                        <div class="f-head">
+                            <label class="f-label" for="tipo-trigger">Tipo PQRS</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Selecciona la categoría que mejor describe tu solicitud</p>
+                        <div class="cs-wrap" id="tipo-wrap">
+                            <button type="button" class="cs-trigger" id="tipo-trigger">
+                                <span id="tipo-display"><span class="cs-placeholder">Selecciona una opción</span></span>
+                            </button>
+                            <div class="cs-dropdown" id="tipo-dropdown" style="display:none">
+                                <input type="text" class="cs-search" placeholder="Encuentra una opción" id="tipo-search">
+                                <ul class="cs-options" id="tipo-options">
+                                    <li class="cs-option" data-value="Petición"><span class="cs-sel-dot cs-sel-dot-peticion"></span>Petición</li>
+                                    <li class="cs-option" data-value="Queja"><span class="cs-sel-dot cs-sel-dot-queja"></span>Queja</li>
+                                    <li class="cs-option" data-value="Reclamo"><span class="cs-sel-dot cs-sel-dot-reclamo"></span>Reclamo</li>
+                                    <li class="cs-option" data-value="Sugerencia"><span class="cs-sel-dot cs-sel-dot-sugerencia"></span>Sugerencia</li>
+                                    <li class="cs-option" data-value="Felicitación"><span class="cs-sel-dot cs-sel-dot-felicitacion"></span>Felicitación</li>
+                                </ul>
+                            </div>
+                            <select name="tipo" id="tipo" required style="display:none">
+                                <option value=""></option>
+                                <option value="Petición">Petición</option>
+                                <option value="Queja">Queja</option>
+                                <option value="Reclamo">Reclamo</option>
+                                <option value="Sugerencia">Sugerencia</option>
+                                <option value="Felicitación">Felicitación</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="f f-stretch">
+                        <div class="f-head">
+                            <label class="f-label" for="descripcion">Descripción</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Describe detalladamente tu solicitud, incluyendo fechas y hechos relevantes</p>
+                        <div class="input-wrap" style="flex:1;display:flex;flex-direction:column;">
+                            <textarea id="descripcion" name="descripcion" required maxlength="600" style="flex:1"></textarea>
+                            <span class="v-icon" style="top:12px;bottom:auto;">✓</span>
+                        </div>
+                        <div class="char-row">
+                            <span class="char-counter" id="char-counter">0 / 600</span>
+                        </div>
+                    </div>
+
+                    <div class="f f-right f-stretch">
+                        <div class="f-head">
+                            <label class="f-label" for="adjunto">Adjuntar (opcional)</label>
+                        </div>
+                        <p class="f-hint">Adjunta documentos, imágenes o archivos que respalden tu solicitud. Esto nos ayudará a analizar y gestionar tu PQRS de manera más eficiente (máximo 10 MB)</p>
+                        <div class="drop-zone" id="drop-zone">
+                            <span class="drop-zone-icon">⊕</span>
+                            <span class="drop-zone-text" id="drop-text">Arrastra un archivo aquí o haz clic para buscar</span>
+                            <input type="file" id="adjunto" name="adjunto" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                        </div>
+                    </div>
+
+                    <div class="f full">
+                        <div class="f-head">
+                            <label class="f-label" id="auth-label">Confirmación y autorización</label>
+                            <span class="f-req">*</span>
+                        </div>
+                        <p class="f-hint">Declaro que acepto y autorizo el tratamiento de mis datos personales para la gestión y respuesta de la presente PQRS</p>
+                        <div class="consent-card" id="auth-wrap" role="checkbox" tabindex="0" aria-checked="false" aria-labelledby="auth-label">
+                            <span class="consent-check" aria-hidden="true">
+                                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                            </span>
+                            <span class="consent-text">Sí, acepto y autorizo el tratamiento de mis datos personales para la gestión y respuesta de la presente PQRS, conforme a la Ley 1581 de 2012.</span>
+                            <select name="autorizacion" id="autorizacion" required style="display:none">
+                                <option value=""></option>
+                                <option value="si">si</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-footer">
+                    <button type="button" class="btn-reset" id="btn-reset">↺ Borrar formulario</button>
+                    <button type="submit" class="btn-submit" id="btn-send">Enviar solicitud →</button>
+                </div>
+            </form>
+            </div><!-- /form-body -->
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-deco footer-deco-1"></div>
+    <div class="footer-deco footer-deco-2"></div>
+    <div class="footer-deco footer-deco-5"></div>
+    <div class="footer-deco footer-deco-3"></div>
+    <div class="footer-deco footer-deco-4"></div>
+
+    <div class="footer-inner">
+        <div class="footer-grid">
+
+            <!-- Col 1 -->
+            <div class="footer-col">
+                <img src="Imagenes/logo.png" alt="TCL Asesores" class="footer-logo-img">
+                <p class="footer-desc">Acompañamos a las empresas más allá del cumplimiento, integrando conocimiento, criterio y compromiso para dar orden, claridad y estabilidad a cada decisión que impacta su crecimiento.</p>
+                <div class="footer-social-row">
+                    <a href="https://facebook.com/tclasesores" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/tclasesores" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <!-- Col 2 -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Lo que hacemos</h4>
+                <div class="footer-title-bar"><span></span><span></span></div>
+                <ul>
+                    <li><a href="https://tclasesores.com">Inicio</a></li>
+                    <li><a href="https://tclasesores.com/acerca-de/">Quienes Somos</a></li>
+                    <li><a href="https://tclasesores.com/equipo/">Equipo</a></li>
+                    <li><a href="https://tclasesores.com/contacto/">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <!-- Col 3 -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Portal de Empleados</h4>
+                <div class="footer-title-bar"><span></span><span></span></div>
+                <ul>
+                    <li><a href="https://tclasesores.com/sqf/">SQF</a></li>
+                    <li><a href="https://tclasesores.com/flouxx/">Flouxx</a></li>
+                    <li><a href="https://tclasesores.com/gosem/">GOSEM</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span class="fb-line"></span>
+            <span class="footer-diamond">◆</span>
+            <span>© 2026 TCL Asesores Todos Los Derechos Reservados</span>
+            <span class="footer-diamond">◆</span>
+            <span class="fb-line"></span>
+        </div>
+    </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="back-to-top" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- DRAWER OVERLAY -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+    <div class="drawer-head">
+        <img src="Imagenes/logo.png" alt="TCL Asesores" class="drawer-logo">
+        <button class="drawer-close" id="drawer-close" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <div class="drawer-body">
+        <p class="drawer-desc">
+            En <strong>TCL</strong> integramos conocimiento, experiencia y compromiso para acompañar a las organizaciones en cada etapa de su desarrollo. Nuestro enfoque une distintas capacidades para dar orden, claridad y respaldo en la toma de decisiones. <strong>TCL, muchas fuerzas un mismo océano de tranquilidad.</strong>
+        </p>
+
+        <div class="drawer-section">
+            <h4>Nosotros</h4>
+            <div class="drawer-contact-item">
+                <span class="di-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span>Poblado Cra 43E #5-106 Oficina 1515 Edificio MIXA · Centro Calle 52 no 49-28 Of. 703 Ed. Lonja · Medellín – Antioquia</span>
+            </div>
+            <div class="drawer-contact-item">
+                <span class="di-icon">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.86a16 16 0 0 0 6.11 6.11l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span>(57+4) 444-5716</span>
+            </div>
+            <div class="drawer-contact-item">
+                <span class="di-icon">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <a href="mailto:info@tclasesores.com" style="color:var(--primary);text-decoration:none;">info@tclasesores.com</a>
+            </div>
+        </div>
+
+        <div class="drawer-section">
+            <h4>Síguenos</h4>
+            <div class="drawer-social">
+                <a href="https://facebook.com/tclasesores" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="https://instagram.com/tclasesores" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WHATSAPP FAB -->
+<a href="https://wa.me/573052841365" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script src="script.js"></script>
+
+</body>
+</html>
