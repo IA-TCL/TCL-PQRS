@@ -1789,28 +1789,6 @@ select {
 .wz-error { padding: 10px 14px; background: #fef2f2; border-left: 3px solid #ef4444; border-radius: 6px; font-size: 13px; color: #991b1b; margin-bottom: 16px; display: none; }
 .wz-error.show { display: block; animation: wz-in-right 0.25s ease both; }
 
-/* ─────────────── FAQ */
-.faq-section { padding: 80px 24px; background: var(--bg-light); border-top: 1px solid var(--border); }
-.faq-inner { max-width: 760px; margin: 0 auto; }
-.faq-list { display: flex; flex-direction: column; gap: 8px; }
-.faq-item { background: #fff; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: box-shadow 0.2s; }
-.faq-item.open { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-.faq-trigger {
-    width: 100%; background: none; border: none;
-    padding: 18px 20px;
-    display: flex; justify-content: space-between; align-items: center; gap: 12px;
-    cursor: pointer; text-align: left;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px; font-weight: 600; color: var(--dark);
-    transition: color 0.2s;
-}
-.faq-trigger:hover { color: var(--primary); }
-.faq-icon { flex-shrink: 0; width: 18px; height: 18px; stroke: #aaa; fill: none; stroke-width: 2; stroke-linecap: round; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), stroke 0.2s; }
-.faq-item.open .faq-icon { transform: rotate(180deg); stroke: var(--primary); }
-.faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
-.faq-item.open .faq-body { max-height: 220px; }
-.faq-body p { margin: 0; padding: 14px 20px 18px; font-size: 13.5px; color: var(--gray); line-height: 1.75; border-top: 1px solid var(--border); }
-
 /* ─────────────── DRAFT TOAST */
 .draft-toast {
     position: fixed; bottom: 28px; left: 50%;
