@@ -2,9 +2,10 @@ import os
 import secrets
 import datetime
 from urllib.parse import quote
+from typing import Optional
 
 import requests
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, File, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -36,6 +37,7 @@ async def submit_pqrs(
     tipo:         str = Form(...),
     descripcion:  str = Form(...),
     autorizacion: str = Form(default="no"),
+    adjunto:      Optional[UploadFile] = File(default=None),
 ):
     tipos_validos = ["Petición", "Queja", "Reclamo", "Sugerencia", "Felicitación"]
     if tipo not in tipos_validos:
@@ -76,5 +78,28 @@ async def submit_pqrs(
             pass
         msg = f"Airtable error {resp.status_code}: {detail}" if detail else f"Airtable error {resp.status_code}"
         return JSONResponse({"success": False, "message": msg}, status_code=500)
+
+    record_id = resp.json().get("id")
+
+    # Subir adjunto si existe
+    if adjunto and adjunto.filename and record_id:
+        try:
+            file_bytes = await adjunto.read()
+            ctype = adjunto.content_type or "application/octet-stream"
+            field_enc = quote("Adjuntar (opcional)")
+            table_enc = quote(AIRTABLE_TABLE)
+            upload_url = (
+                f"https://content.airtable.com/v0/{AIRTABLE_BASE}"
+                f"/{table_enc}/{record_id}/{field_enc}/uploadAttachment"
+            )
+            requests.post(
+                upload_url,
+                headers={"Authorization": f"Bearer {AIRTABLE_TOKEN}"},
+                files={"file": (adjunto.filename, file_bytes, ctype)},
+                data={"filename": adjunto.filename, "contentType": ctype},
+                timeout=30,
+            )
+        except Exception:
+            pass  # El registro ya quedó guardado; el adjunto es opcional
 
     return JSONResponse({"success": True, "message": "Solicitud enviada correctamente.", "radicado": radicado})
