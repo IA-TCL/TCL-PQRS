@@ -69,6 +69,12 @@ async def submit_pqrs(
         return JSONResponse({"success": False, "message": "Error de conexión. Intenta más tarde."}, status_code=500)
 
     if resp.status_code not in (200, 201):
-        return JSONResponse({"success": False, "message": "No se pudo registrar la solicitud."}, status_code=500)
+        detail = ""
+        try:
+            detail = resp.json().get("error", {}).get("message", "")
+        except Exception:
+            pass
+        msg = f"Airtable error {resp.status_code}: {detail}" if detail else f"Airtable error {resp.status_code}"
+        return JSONResponse({"success": False, "message": msg}, status_code=500)
 
     return JSONResponse({"success": True, "message": "Solicitud enviada correctamente.", "radicado": radicado})
