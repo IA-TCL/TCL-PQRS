@@ -64,8 +64,6 @@ function validateStep1() {
     const apellidos = document.getElementById('wz-apellidos').value.trim();
     const correo    = document.getElementById('wz-correo').value.trim();
     const celular   = document.getElementById('wz-celular').value.trim();
-    const tipodoc   = document.getElementById('wz-tipodoc').value;
-    const numdoc    = document.getElementById('wz-numdoc').value.trim();
     if (!nombres)   { showError('Por favor ingresa tus nombres.'); return false; }
     if (!apellidos) { showError('Por favor ingresa tus apellidos.'); return false; }
     if (!correo || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
@@ -74,8 +72,6 @@ function validateStep1() {
     if (!celular || celular.replace(/\D/g,'').length < 7) {
         showError('Ingresa un número de celular válido.'); return false;
     }
-    if (!tipodoc) { showError('Selecciona el tipo de documento.'); return false; }
-    if (!numdoc)  { showError('Ingresa tu número de documento.'); return false; }
     return true;
 }
 
@@ -110,9 +106,7 @@ function updateSummary() {
     document.getElementById('sum-correo').textContent  = document.getElementById('wz-correo').value.trim();
     document.getElementById('sum-celular').textContent = document.getElementById('wz-celular').value.trim();
     document.getElementById('sum-tipo').textContent    = document.getElementById('wz-tipo').value;
-    document.getElementById('sum-tipodoc').textContent = document.getElementById('wz-tipodoc').value;
-    document.getElementById('sum-numdoc').textContent  = document.getElementById('wz-numdoc').value.trim();
-    document.getElementById('sum-desc').textContent    = document.getElementById('wz-descripcion').value.trim();
+document.getElementById('sum-desc').textContent    = document.getElementById('wz-descripcion').value.trim();
 }
 
 /* ── Button events ──────────────────────────────── */
@@ -362,9 +356,6 @@ function resetWizard() {
     setDescPlaceholder('');
     setSelectedCard('');
 
-    const tipodocEl = document.getElementById('wz-tipodoc');
-    if (tipodocEl) tipodocEl.value = '';
-
     wzCharCount.textContent = '0 / 600';
     wzCharCount.classList.remove('warn', 'over');
 
@@ -391,7 +382,7 @@ document.getElementById('wz-clear-btn').addEventListener('click', resetWizard);
 
 /* ── Draft saving ───────────────────────────────── */
 const DRAFT_KEY    = 'pqrs_draft_wz';
-const DRAFT_FIELDS = ['wz-nombres','wz-apellidos','wz-correo','wz-celular','wz-numdoc','wz-descripcion'];
+const DRAFT_FIELDS = ['wz-nombres','wz-apellidos','wz-correo','wz-celular','wz-descripcion'];
 
 /* ── Draft toast (debounced) ────────────────────── */
 let _draftToastTimer;
@@ -409,7 +400,6 @@ function saveDraft() {
     const d = {};
     DRAFT_FIELDS.forEach(id => { d[id] = document.getElementById(id)?.value || ''; });
     d.tipo       = wzTipoSelect.value;
-    d.tipo_documento = document.getElementById('wz-tipodoc')?.value || '';
     try { localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); _showDraftToast(); } catch {}
 }
 function clearDraft() {
@@ -430,10 +420,6 @@ function loadDraft() {
             wzTipoDisplay.innerHTML = `<span class="cs-sel-dot ${dotClassMap[d.tipo]}"></span>${d.tipo}`;
             setDescPlaceholder(d.tipo);
         }
-        if (d.tipo_documento) {
-            const tipodocEl = document.getElementById('wz-tipodoc');
-            if (tipodocEl) tipodocEl.value = d.tipo_documento;
-        }
         if (d['wz-descripcion']) {
             const len = d['wz-descripcion'].length;
             wzCharCount.textContent = `${len} / 600`;
@@ -445,7 +431,6 @@ function loadDraft() {
 DRAFT_FIELDS.forEach(id => {
     document.getElementById(id)?.addEventListener('input', saveDraft);
 });
-document.getElementById('wz-tipodoc')?.addEventListener('change', saveDraft);
 loadDraft();
 
 /* ── Drawer ─────────────────────────────────────── */
