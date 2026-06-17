@@ -47,13 +47,14 @@ async def submit_pqrs(
     radicado = f"TCL-{datetime.date.today().strftime('%Y%m%d')}-{secrets.token_hex(3).upper()}"
 
     fields = {
-        "Nombres":            nombres,
-        "Apellidos":          apellidos,
-        "Correo electronico": correo,
-        "Celular":            celular,
-        "Tipo PQRS":          tipo,
-        "Descripción":        descripcion,
-        "Radicado":           radicado,
+        "Nombres":                     nombres,
+        "Apellidos":                   apellidos,
+        "Correo electronico":          correo,
+        "Celular":                     celular,
+        "Tipo PQRS":                   tipo,
+        "Descripción":                 descripcion,
+        "Radicado":                    radicado,
+        "Confirmación y autorización": "Acepto y autorizo",
     }
 
     url = f"https://api.airtable.com/v0/{AIRTABLE_BASE}/{quote(AIRTABLE_TABLE)}"
