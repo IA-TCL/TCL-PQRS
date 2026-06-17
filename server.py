@@ -28,6 +28,16 @@ async def health():
     return {"status": "ok"}
 
 
+@app.get("/meta")
+async def meta():
+    resp = requests.get(
+        f"https://api.airtable.com/v0/meta/bases/{AIRTABLE_BASE}/tables",
+        headers={"Authorization": f"Bearer {AIRTABLE_TOKEN}"},
+        timeout=10,
+    )
+    return resp.json()
+
+
 @app.post("/pqrs")
 async def submit_pqrs(
     nombres:      str = Form(...),
