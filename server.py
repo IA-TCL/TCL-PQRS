@@ -22,10 +22,6 @@ AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
 AIRTABLE_BASE  = os.getenv("AIRTABLE_BASE",  "appbi0qh1QhTzFVg0")
 AIRTABLE_TABLE = os.getenv("AIRTABLE_TABLE", "Pqrs")
 
-# IDs internos de Airtable (tabla Pqrs)
-AIRTABLE_TABLE_ID = "tblGmUD3nhTxcntGD"
-AIRTABLE_FIELD_ADJUNTO = "fldnc0EZ0TmTNgt7u"
-
 
 @app.get("/")
 async def health():
@@ -86,27 +82,31 @@ async def submit_pqrs(
     record_id = resp.json().get("id")
 
     # Subir adjunto si existe
-    attach_debug = None
     if adjunto and adjunto.filename and record_id:
         try:
             file_bytes = await adjunto.read()
             ctype = adjunto.content_type or "application/octet-stream"
-            upload_url = (
-                f"https://content.airtable.com/v0/{AIRTABLE_BASE}"
-                f"/{AIRTABLE_TABLE_ID}/{record_id}/{AIRTABLE_FIELD_ADJUNTO}/uploadAttachment"
-            )
-            up = requests.post(
-                upload_url,
-                headers={"Authorization": f"Bearer {AIRTABLE_TOKEN}"},
-                files={
-                    "file":        (adjunto.filename, file_bytes, ctype),
-                    "filename":    (None, adjunto.filename),
-                    "contentType": (None, ctype),
-                },
-                timeout=30,
-            )
-            attach_debug = {"status": up.status_code, "body": up.text[:500], "url": upload_url, "record_id": record_id}
-        except Exception as e:
-            attach_debug = {"error": str(e)}
 
-    return JSONResponse({"success": True, "message": "Solicitud enviada correctamente.", "radicado": radicado, "attach_debug": attach_debug})
+            # 1. Subir a tmpfiles.org para obtener una URL temporal
+            tmp = requests.post(
+                "https://tmpfiles.org/api/v1/upload",
+                files={"file": (adjunto.filename, file_bytes, ctype)},
+                timeout=15,
+            )
+            file_url = tmp.json().get("data", {}).get("url", "")
+            # Convertir URL de vista a URL de descarga directa
+            file_url = file_url.replace("tmpfiles.org/", "tmpfiles.org/dl/")
+
+            if file_url:
+                # 2. PATCH del registro con la URL — Airtable la descarga y almacena permanentemente
+                patch_url = f"https://api.airtable.com/v0/{AIRTABLE_BASE}/{quote(AIRTABLE_TABLE)}/{record_id}"
+                requests.patch(
+                    patch_url,
+                    json={"fields": {"Adjuntar (opcional)": [{"url": file_url, "filename": adjunto.filename}]}},
+                    headers=headers,
+                    timeout=10,
+                )
+        except Exception:
+            pass  # El registro ya quedó guardado; el adjunto es opcional
+
+    return JSONResponse({"success": True, "message": "Solicitud enviada correctamente.", "radicado": radicado})
