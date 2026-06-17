@@ -9,6 +9,6 @@ services:
       - key: AIRTABLE_TOKEN
         sync: false
       - key: AIRTABLE_BASE
-        value: appLVSEg1Y2zlwvuM
+        value: appLVSEg1Y2zIwvuM
       - key: AIRTABLE_TABLE
         value: Pqrs
