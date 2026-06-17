@@ -306,6 +306,85 @@
             .wz-summary { grid-template-columns: 1fr; }
             .wz-sum-divider { display: none; }
         }
+
+        /* ── Document type select ──────────────────────── */
+        .wz-select {
+            width: 100%;
+            height: 42px;
+            padding: 0 36px 0 12px;
+            border: 1.5px solid var(--border);
+            border-radius: 7px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13.5px;
+            color: var(--dark);
+            background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E") no-repeat right 12px center;
+            background-size: 16px;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+        .wz-select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(42,64,56,0.08); }
+        .wz-select option[value=""] { color: #bbb; }
+
+        /* ── FAQ ───────────────────────────────────────── */
+        .faq-section {
+            padding: 80px 24px;
+            background: var(--bg-light);
+            border-top: 1px solid var(--border);
+        }
+        .faq-inner {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+        .faq-list { display: flex; flex-direction: column; gap: 8px; }
+        .faq-item {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.2s;
+        }
+        .faq-item.open { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .faq-trigger {
+            width: 100%; background: none; border: none;
+            padding: 18px 20px;
+            display: flex; justify-content: space-between; align-items: center; gap: 12px;
+            cursor: pointer; text-align: left;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px; font-weight: 600; color: var(--dark);
+            transition: color 0.2s;
+        }
+        .faq-trigger:hover { color: var(--primary); }
+        .faq-icon {
+            flex-shrink: 0; width: 18px; height: 18px;
+            stroke: #aaa; fill: none; stroke-width: 2; stroke-linecap: round;
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), stroke 0.2s;
+        }
+        .faq-item.open .faq-icon { transform: rotate(180deg); stroke: var(--primary); }
+        .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1); }
+        .faq-item.open .faq-body { max-height: 220px; }
+        .faq-body p {
+            margin: 0; padding: 14px 20px 18px;
+            font-size: 13.5px; color: var(--gray); line-height: 1.75;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── Draft toast ───────────────────────────────── */
+        .draft-toast {
+            position: fixed; bottom: 28px; left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            background: #1a3a2e; color: #fff;
+            font-size: 12.5px; font-weight: 500;
+            padding: 9px 18px 9px 14px; border-radius: 24px;
+            display: flex; align-items: center; gap: 7px;
+            opacity: 0; pointer-events: none; z-index: 9999;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+            transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34,1.2,0.64,1);
+            white-space: nowrap;
+        }
+        .draft-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
     </style>
 </head>
 <body>
@@ -584,6 +663,27 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="wz-row">
+                            <div>
+                                <div class="wz-field-label">Tipo de documento <span class="wz-req">*</span></div>
+                                <p class="wz-hint">Documento de identificación</p>
+                                <select class="wz-select" id="wz-tipodoc" name="tipo_documento" required>
+                                    <option value="">Selecciona una opción</option>
+                                    <option value="Cédula de Ciudadanía (CC)">Cédula de Ciudadanía (CC)</option>
+                                    <option value="NIT">NIT</option>
+                                    <option value="Cédula de Extranjería (CE)">Cédula de Extranjería (CE)</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                </select>
+                            </div>
+                            <div>
+                                <div class="wz-field-label">Número de documento <span class="wz-req">*</span></div>
+                                <p class="wz-hint">Sin puntos ni comas</p>
+                                <div class="input-wrap">
+                                    <input type="text" id="wz-numdoc" name="numero_documento" required inputmode="numeric">
+                                    <span class="v-icon">✓</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="wz-nav">
@@ -669,6 +769,14 @@
                         <div>
                             <div class="wz-sum-key">Tipo PQRS</div>
                             <div class="wz-sum-val" id="sum-tipo">—</div>
+                        </div>
+                        <div>
+                            <div class="wz-sum-key">Tipo documento</div>
+                            <div class="wz-sum-val" id="sum-tipodoc">—</div>
+                        </div>
+                        <div>
+                            <div class="wz-sum-key">Número documento</div>
+                            <div class="wz-sum-val" id="sum-numdoc">—</div>
                         </div>
                         <div class="wz-sum-divider"></div>
                         <div class="wz-sum-full-col">
@@ -774,6 +882,63 @@
 
         </div><!-- /wz-card -->
 
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+    <div class="faq-inner">
+        <div style="text-align:center;margin-bottom:40px">
+            <span class="section-label section-label--center">Resolvemos tus dudas</span>
+            <h2 class="section-title">Preguntas frecuentes</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-trigger" aria-expanded="false">
+                    <span>¿Qué pasa después de enviar mi solicitud?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-body">
+                    <p>Nuestro equipo la recibe de inmediato, le asigna un número de radicado único y la dirige al área responsable. Conforme al Decreto 1166 de 2016, tienes garantía de respuesta en un máximo de 15 días hábiles.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" aria-expanded="false">
+                    <span>¿Cómo puedo hacer seguimiento a mi caso?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-body">
+                    <p>Guarda el número de radicado que aparece en la pantalla al finalizar el envío. Con ese número puedes contactarnos por teléfono, WhatsApp o correo y te informaremos el estado de tu caso de inmediato.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" aria-expanded="false">
+                    <span>¿Qué tipos de archivos puedo adjuntar?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-body">
+                    <p>Aceptamos imágenes (JPG, PNG) y documentos (PDF, DOC, DOCX) de hasta 10 MB. Si necesitas adjuntar varios archivos, te recomendamos comprimirlos en un ZIP antes de cargarlos.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" aria-expanded="false">
+                    <span>¿Está segura mi información personal?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-body">
+                    <p>Sí. Tratamos tu información conforme a la Ley 1581 de 2012 (Habeas Data) y el Decreto 1377 de 2013. Solo se usará para atender tu solicitud y no será compartida con terceros sin tu autorización.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-trigger" aria-expanded="false">
+                    <span>¿Puedo modificar mi solicitud después de enviarla?</span>
+                    <svg class="faq-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="faq-body">
+                    <p>Una vez enviada, no es posible modificarla desde este portal. Si necesitas hacer algún ajuste, contáctanos directamente al (+57) 305 2841365 citando tu número de radicado y lo gestionamos juntos.</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -902,6 +1067,12 @@
 <a href="https://wa.me/573052841365" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
+
+<!-- DRAFT TOAST -->
+<div class="draft-toast" id="draft-toast">
+    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    Borrador guardado
+</div>
 
 <script src="script.js"></script>
 

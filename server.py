@@ -30,14 +30,16 @@ async def health():
 
 @app.post("/pqrs")
 async def submit_pqrs(
-    nombres:      str = Form(...),
-    apellidos:    str = Form(...),
-    correo:       str = Form(...),
-    celular:      str = Form(...),
-    tipo:         str = Form(...),
-    descripcion:  str = Form(...),
-    autorizacion: str = Form(default="no"),
-    adjunto:      Optional[UploadFile] = File(default=None),
+    nombres:          str = Form(...),
+    apellidos:        str = Form(...),
+    correo:           str = Form(...),
+    celular:          str = Form(...),
+    tipo_documento:   str = Form(...),
+    numero_documento: str = Form(...),
+    tipo:             str = Form(...),
+    descripcion:      str = Form(...),
+    autorizacion:     str = Form(default="no"),
+    adjunto:          Optional[UploadFile] = File(default=None),
 ):
     tipos_validos = ["Petición", "Queja", "Reclamo", "Sugerencia", "Felicitación"]
     if tipo not in tipos_validos:
@@ -53,6 +55,8 @@ async def submit_pqrs(
         "Apellidos":                   apellidos,
         "Correo electronico":          correo,
         "Celular":                     celular,
+        "Tipo de documento":           tipo_documento,
+        "Número de documento":         numero_documento,
         "Tipo PQRS":                   tipo,
         "Descripción":                 descripcion,
         "Radicado":                    radicado,
