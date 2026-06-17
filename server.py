@@ -13,7 +13,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["POST", "GET"],
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -35,7 +35,7 @@ async def submit_pqrs(
     celular:      str = Form(...),
     tipo:         str = Form(...),
     descripcion:  str = Form(...),
-    autorizacion: str = Form(...),
+    autorizacion: str = Form(default="no"),
 ):
     tipos_validos = ["Petición", "Queja", "Reclamo", "Sugerencia", "Felicitación"]
     if tipo not in tipos_validos:

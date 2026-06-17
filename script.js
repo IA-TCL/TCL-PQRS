@@ -1,3 +1,6 @@
+// Pre-warm Render service on page load (free tier spins down after inactivity)
+fetch('https://tcl-pqrs.onrender.com/').catch(() => {});
+
 // ── Copy to clipboard (cta-contact-item)
 document.querySelectorAll('.cta-contact-item[data-copy]').forEach(item => {
     item.addEventListener('click', e => {
@@ -293,16 +296,17 @@ form.addEventListener('submit', async e => {
 
     try {
         const res  = await fetch('https://tcl-pqrs.onrender.com/pqrs', { method: 'POST', body: new FormData(form) });
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const json = await res.json();
-        if (json.success) {
+        let json;
+        try { json = await res.json(); } catch { json = {}; }
+        if (res.ok && json.success) {
             clearDraft();
             showSuccessScreen(json.radicado || '');
         } else {
-            showError(json.message || 'Error al enviar.');
+            const detail = json.message || (json.detail && json.detail[0] && json.detail[0].msg) || '';
+            showError(detail || `Error del servidor (${res.status}). Intenta más tarde.`);
         }
     } catch {
-        showError('Error de conexión. Intenta más tarde.');
+        showError('Error de red. Verifica tu conexión e intenta de nuevo.');
     } finally {
         btnSend.disabled = false;
         btnSend.innerHTML = 'Enviar solicitud →';
