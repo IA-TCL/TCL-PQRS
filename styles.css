@@ -185,12 +185,6 @@ nav a.active { color: var(--primary); font-weight: 600; }
     margin-bottom: 14px;
 }
 .section-label--center { justify-content: center; }
-.section-label::before {
-    content: '';
-    width: 28px; height: 2px;
-    background: var(--primary);
-    border-radius: 2px;
-}
 
 .section-title {
     font-family: 'Roboto Slab', serif;
