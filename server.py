@@ -86,6 +86,7 @@ async def submit_pqrs(
     record_id = resp.json().get("id")
 
     # Subir adjunto si existe
+    attach_debug = None
     if adjunto and adjunto.filename and record_id:
         try:
             file_bytes = await adjunto.read()
@@ -94,14 +95,18 @@ async def submit_pqrs(
                 f"https://content.airtable.com/v0/{AIRTABLE_BASE}"
                 f"/{AIRTABLE_TABLE_ID}/{record_id}/{AIRTABLE_FIELD_ADJUNTO}/uploadAttachment"
             )
-            requests.post(
+            up = requests.post(
                 upload_url,
                 headers={"Authorization": f"Bearer {AIRTABLE_TOKEN}"},
-                files={"file": (adjunto.filename, file_bytes, ctype)},
-                data={"filename": adjunto.filename, "contentType": ctype},
+                files={
+                    "file":        (adjunto.filename, file_bytes, ctype),
+                    "filename":    (None, adjunto.filename),
+                    "contentType": (None, ctype),
+                },
                 timeout=30,
             )
-        except Exception:
-            pass  # El registro ya quedó guardado; el adjunto es opcional
+            attach_debug = {"status": up.status_code, "body": up.text[:500]}
+        except Exception as e:
+            attach_debug = {"error": str(e)}
 
-    return JSONResponse({"success": True, "message": "Solicitud enviada correctamente.", "radicado": radicado})
+    return JSONResponse({"success": True, "message": "Solicitud enviada correctamente.", "radicado": radicado, "attach_debug": attach_debug})
