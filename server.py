@@ -105,7 +105,7 @@ async def submit_pqrs(
                 },
                 timeout=30,
             )
-            attach_debug = {"status": up.status_code, "body": up.text[:500]}
+            attach_debug = {"status": up.status_code, "body": up.text[:500], "url": upload_url, "record_id": record_id}
         except Exception as e:
             attach_debug = {"error": str(e)}
 
