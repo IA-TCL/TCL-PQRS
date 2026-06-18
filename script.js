@@ -322,8 +322,11 @@ ssCopyBtn.addEventListener('click', () => {
     });
 });
 btnNueva.addEventListener('click', () => {
-    if (window.history.length > 1) window.history.back();
-    else window.location.reload();
+    wzSuccess.style.display  = 'none';
+    wzForm.style.display     = '';
+    wzProgress.style.display = '';
+    wzHeadTitle.textContent  = 'Radica tu solicitud';
+    resetWizard();
 });
 
 function showSuccessScreen(radicado) {
