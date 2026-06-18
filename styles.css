@@ -2,7 +2,7 @@
 
 :root {
     --primary:   #2A4038;
-    --dark:      #2A4038;
+    --dark:      var(--primary);
     --gray-dark: #555;
     --gray:      #888;
     --border:    #E5E5E5;
