@@ -55,6 +55,12 @@ async def submit_pqrs(
     if autorizacion != "si":
         return JSONResponse({"success": False, "message": "Debes aceptar la política de privacidad."}, status_code=400)
 
+    if len(nombres) > 100 or len(apellidos) > 100:
+        return JSONResponse({"success": False, "message": "El nombre no puede superar los 100 caracteres."}, status_code=400)
+
+    if len(celular) > 15:
+        return JSONResponse({"success": False, "message": "El celular no puede superar los 15 caracteres."}, status_code=400)
+
     if not re.match(r'^[^\s@]+@[^\s@]+\.[^\s@]+$', correo):
         return JSONResponse({"success": False, "message": "Correo electrónico no válido."}, status_code=400)
 
