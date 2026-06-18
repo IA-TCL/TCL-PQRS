@@ -757,6 +757,11 @@ select {
     flex-shrink: 0;
     display: inline-block;
 }
+#wz-tipo-display {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
 .cs-sel-dot-peticion    { background: #364d42; }
 .cs-sel-dot-queja       { background: #3a4e62; }
 .cs-sel-dot-reclamo     { background: #5e4535; }
