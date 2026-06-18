@@ -54,8 +54,8 @@ async def submit_pqrs(
     if autorizacion != "si":
         return JSONResponse({"success": False, "message": "Debes aceptar la política de privacidad."}, status_code=400)
 
-    if len(descripcion) > 600:
-        return JSONResponse({"success": False, "message": "La descripción no puede superar los 600 caracteres."}, status_code=400)
+    if len(descripcion) > 700:
+        return JSONResponse({"success": False, "message": "La descripción no puede superar los 700 caracteres."}, status_code=400)
 
     TIPOS_PERMITIDOS = {'.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'}
     MAX_FILE_SIZE    = 25 * 1024 * 1024  # 25 MB

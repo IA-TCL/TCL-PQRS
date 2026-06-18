@@ -272,8 +272,8 @@ const wzDescTa    = document.getElementById('wz-descripcion');
 const wzCharCount = document.getElementById('wz-char-counter');
 wzDescTa.addEventListener('input', () => {
     const len = wzDescTa.value.length;
-    wzCharCount.textContent = `${len} / 600`;
-    wzCharCount.classList.toggle('warn', len > 480);
+    wzCharCount.textContent = `${len} / 700`;
+    wzCharCount.classList.toggle('warn', len > 560);
     saveDraft();
 });
 
@@ -358,7 +358,7 @@ function resetWizard() {
     setDescPlaceholder('');
     setSelectedCard('');
 
-    wzCharCount.textContent = '0 / 600';
+    wzCharCount.textContent = '0 / 700';
     wzCharCount.classList.remove('warn', 'over');
 
     wzAdjunto.value = '';
@@ -424,8 +424,8 @@ function loadDraft() {
         }
         if (d['wz-descripcion']) {
             const len = d['wz-descripcion'].length;
-            wzCharCount.textContent = `${len} / 600`;
-            wzCharCount.classList.toggle('warn', len > 480 && len <= 600);
+            wzCharCount.textContent = `${len} / 700`;
+            wzCharCount.classList.toggle('warn', len > 560 && len <= 700);
             wzCharCount.classList.remove('over');
         }
     } catch {}
