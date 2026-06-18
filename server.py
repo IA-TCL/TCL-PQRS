@@ -1,4 +1,5 @@
 import os
+import re
 import secrets
 import datetime
 from urllib.parse import quote
@@ -53,6 +54,9 @@ async def submit_pqrs(
 
     if autorizacion != "si":
         return JSONResponse({"success": False, "message": "Debes aceptar la política de privacidad."}, status_code=400)
+
+    if not re.match(r'^[^\s@]+@[^\s@]+\.[^\s@]+$', correo):
+        return JSONResponse({"success": False, "message": "Correo electrónico no válido."}, status_code=400)
 
     if len(descripcion) > 700:
         return JSONResponse({"success": False, "message": "La descripción no puede superar los 700 caracteres."}, status_code=400)
