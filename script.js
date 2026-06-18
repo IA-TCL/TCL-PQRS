@@ -307,7 +307,6 @@ wzForm.addEventListener('submit', async e => {
 
 /* ── Success screen ─────────────────────────────── */
 const wzSuccess   = document.getElementById('wz-success');
-const wzBody      = document.querySelector('.wz-body');
 const wzProgress  = document.getElementById('wz-progress');
 const wzHeadTitle = document.getElementById('wz-head-title');
 const ssRadicado  = document.getElementById('ss-radicado');
