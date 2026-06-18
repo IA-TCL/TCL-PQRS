@@ -27,14 +27,6 @@ AIRTABLE_TABLE = os.getenv("AIRTABLE_TABLE", "Pqrs")
 async def health():
     return {"status": "ok"}
 
-@app.get("/debug")
-async def debug():
-    return {
-        "base":  AIRTABLE_BASE,
-        "table": AIRTABLE_TABLE,
-        "token": AIRTABLE_TOKEN[:12] + "..." if AIRTABLE_TOKEN else "NO CONFIGURADO",
-    }
-
 
 @app.post("/pqrs")
 async def submit_pqrs(
