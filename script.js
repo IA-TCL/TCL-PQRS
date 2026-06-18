@@ -273,8 +273,7 @@ const wzCharCount = document.getElementById('wz-char-counter');
 wzDescTa.addEventListener('input', () => {
     const len = wzDescTa.value.length;
     wzCharCount.textContent = `${len} / 600`;
-    wzCharCount.classList.toggle('warn', len > 480 && len <= 600);
-    wzCharCount.classList.toggle('over', len > 600);
+    wzCharCount.classList.toggle('warn', len > 480);
     saveDraft();
 });
 

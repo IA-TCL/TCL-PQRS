@@ -629,7 +629,6 @@ nav a.active { color: var(--primary); font-weight: 600; }
     transition: color 0.2s;
 }
 .char-counter.warn { color: #f59e0b; }
-.char-counter.over { color: #ef4444; }
 
 input[type=text],
 input[type=email],
