@@ -46,6 +46,14 @@ async def submit_pqrs(
     if autorizacion != "si":
         return JSONResponse({"success": False, "message": "Debes aceptar la política de privacidad."}, status_code=400)
 
+    MAX_FILE_SIZE = 25 * 1024 * 1024  # 25 MB
+    if adjunto and adjunto.filename:
+        file_bytes = await adjunto.read()
+        if len(file_bytes) > MAX_FILE_SIZE:
+            return JSONResponse({"success": False, "message": "El archivo adjunto no puede superar los 25 MB."}, status_code=400)
+    else:
+        file_bytes = None
+
     radicado = f"TCL-{datetime.date.today().strftime('%Y%m%d')}-{secrets.token_hex(3).upper()}"
 
     fields = {
@@ -82,9 +90,8 @@ async def submit_pqrs(
     record_id = resp.json().get("id")
 
     # Subir adjunto si existe
-    if adjunto and adjunto.filename and record_id:
+    if file_bytes and adjunto and adjunto.filename and record_id:
         try:
-            file_bytes = await adjunto.read()
             ctype = adjunto.content_type or "application/octet-stream"
 
             # 1. Subir a tmpfiles.org para obtener una URL temporal
