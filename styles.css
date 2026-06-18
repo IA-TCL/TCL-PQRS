@@ -1605,10 +1605,10 @@ select {
 
 /* Navigation */
 .wz-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; border-top: 1px solid var(--border); margin-top: 24px; }
-.wz-btn-back { background: none; border: none; font-family: 'Roboto', sans-serif; font-size: 13px; color: #aaa; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; transition: color 0.2s; }
+.wz-btn-back { background: none; border: none; font-family: 'Roboto', sans-serif; font-size: 13px; color: #888; cursor: pointer; display: flex; align-items: center; gap: 5px; padding: 0; transition: color 0.2s; }
 .wz-btn-back:hover { color: var(--primary); }
 .wz-btn-back:disabled { opacity: 0; pointer-events: none; }
-.wz-counter { font-size: 12px; color: #ccc; font-weight: 600; letter-spacing: 0.5px; }
+.wz-counter { font-size: 12px; color: #aaa; font-weight: 600; letter-spacing: 0.5px; }
 .wz-btn-next {
     padding: 11px 28px;
     background: linear-gradient(135deg, var(--dark), #2A4038);
