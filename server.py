@@ -25,9 +25,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-AIRTABLE_TOKEN = os.getenv("AIRTABLE_TOKEN")
-AIRTABLE_BASE  = os.getenv("AIRTABLE_BASE",  "appLVSEg1Y2zIwvuM")
-AIRTABLE_TABLE = os.getenv("AIRTABLE_TABLE", "Pqrs")
+AIRTABLE_TOKEN   = os.getenv("AIRTABLE_TOKEN")
+AIRTABLE_BASE    = os.getenv("AIRTABLE_BASE",  "appLVSEg1Y2zIwvuM")
+AIRTABLE_TABLE   = os.getenv("AIRTABLE_TABLE", "Pqrs")
+
+TIPOS_PERMITIDOS = {'.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'}
+MAX_FILE_SIZE    = 25 * 1024 * 1024  # 25 MB
 
 
 @app.get("/")
@@ -67,8 +70,6 @@ async def submit_pqrs(
     if len(descripcion) > 700:
         return JSONResponse({"success": False, "message": "La descripción no puede superar los 700 caracteres."}, status_code=400)
 
-    TIPOS_PERMITIDOS = {'.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'}
-    MAX_FILE_SIZE    = 25 * 1024 * 1024  # 25 MB
     if adjunto and adjunto.filename:
         ext = os.path.splitext(adjunto.filename)[1].lower()
         if ext not in TIPOS_PERMITIDOS:
