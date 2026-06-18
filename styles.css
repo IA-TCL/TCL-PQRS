@@ -419,8 +419,10 @@ nav a.active { color: var(--primary); font-weight: 600; }
     font-weight: 700;
     line-height: 1.15;
     margin-bottom: 16px;
-    color: var(--dark);
+    color: #111;
+    transition: color 0.35s ease;
 }
+.info-col h2:hover { color: var(--dark); }
 .info-col > p {
     color: var(--gray);
     font-size: 15px;
