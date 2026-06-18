@@ -106,7 +106,7 @@ function updateSummary() {
     document.getElementById('sum-correo').textContent  = document.getElementById('wz-correo').value.trim();
     document.getElementById('sum-celular').textContent = document.getElementById('wz-celular').value.trim();
     document.getElementById('sum-tipo').textContent    = document.getElementById('wz-tipo').value;
-document.getElementById('sum-desc').textContent    = document.getElementById('wz-descripcion').value.trim();
+    document.getElementById('sum-desc').textContent    = document.getElementById('wz-descripcion').value.trim();
 }
 
 /* ── Button events ──────────────────────────────── */
@@ -423,7 +423,8 @@ function loadDraft() {
         if (d['wz-descripcion']) {
             const len = d['wz-descripcion'].length;
             wzCharCount.textContent = `${len} / 600`;
-            wzCharCount.classList.toggle('warn', len > 480);
+            wzCharCount.classList.toggle('warn', len > 480 && len <= 600);
+            wzCharCount.classList.remove('over');
         }
     } catch {}
 }

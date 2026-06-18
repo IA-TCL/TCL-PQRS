@@ -598,77 +598,6 @@ nav a.active { color: var(--primary); font-weight: 600; }
 .cta-contact-item.copied .cta-contact-icon { background: #2A4038; }
 .cta-contact-item.copied .cta-copy-hint { opacity: 0; }
 
-/* ─────────────── FORM */
-.form-wrap {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 40px rgba(0,0,0,0.06);
-}
-.form-header {
-    padding: 28px 36px 24px;
-    background: linear-gradient(135deg, var(--dark) 0%, #2A4038 100%);
-    position: relative;
-    overflow: hidden;
-}
-.form-header::before {
-    content: '';
-    position: absolute;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    top: -80px; right: -60px;
-}
-.form-header::after {
-    content: '';
-    position: absolute;
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: rgba(165,214,167,0.08);
-    bottom: -40px; left: 20px;
-}
-.form-title {
-    font-family: 'Roboto Slab', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 4px;
-    position: relative; z-index: 1;
-}
-.form-subtitle {
-    font-size: 12.5px;
-    color: rgba(255,255,255,0.6);
-    position: relative; z-index: 1;
-}
-.form-body { padding: 28px 36px 32px; }
-
-/* Section headers */
-.form-section-sep {
-    grid-column: 1 / -1;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 0 4px;
-}
-.form-section-sep:first-child { padding-top: 0; }
-.form-section-num {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    background: var(--dark);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-.form-section-text { flex: 1; }
-.form-section-title { font-size: 13px; font-weight: 600; color: var(--dark); display: block; }
-.form-section-sub   { font-size: 11px; color: var(--gray); }
-.form-section-line  { flex: 1; height: 1px; background: var(--border); }
-
 /* Input validation */
 .input-wrap { position: relative; }
 .input-wrap .v-icon {
@@ -701,79 +630,6 @@ nav a.active { color: var(--primary); font-weight: 600; }
 }
 .char-counter.warn { color: #f59e0b; }
 .char-counter.over { color: #ef4444; }
-
-/* Draft notice */
-.draft-notice {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 10px 14px;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 6px;
-    font-size: 12.5px;
-    color: #1e40af;
-    margin-bottom: 16px;
-}
-.draft-notice button {
-    background: none;
-    border: none;
-    font-size: 12px;
-    color: #6b7280;
-    cursor: pointer;
-    padding: 0;
-    white-space: nowrap;
-    text-decoration: underline;
-    flex-shrink: 0;
-}
-.draft-notice button:hover { color: #1e40af; }
-
-.alert {
-    padding: 12px 16px;
-    border-radius: 6px;
-    font-size: 13px;
-    margin-bottom: 20px;
-    display: none;
-    border-left: 4px solid;
-}
-.alert.show { display: block; }
-.alert-ok  { background: #f0fdf4; border-left-color: #10b981; color: #047857; }
-.alert-err { background: #fef2f2; border-left-color: #ef4444; color: #991b1b; }
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--border);
-}
-.f {
-    padding: 16px 20px 16px 0;
-    border-bottom: 1px solid var(--border);
-}
-.f-right {
-    padding: 16px 0 16px 20px;
-    border-left: 1px solid var(--border);
-}
-.f.full {
-    grid-column: 1 / -1;
-    padding: 16px 0;
-}
-.f-stretch {
-    display: flex;
-    flex-direction: column;
-}
-.f-stretch textarea,
-.f-stretch .drop-zone { flex: 1; }
-
-.f-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 3px;
-}
-.f-label { font-size: 12.5px; font-weight: 600; color: #1A1A1A; }
-.f-req   { color: #EF4444; font-size: 12px; }
-.f-hint  { font-size: 11.5px; color: #bbb; margin-bottom: 8px; line-height: 1.4; }
 
 input[type=text],
 input[type=email],
@@ -993,27 +849,6 @@ select {
 .drop-zone-icon { font-size: 20px; color: #ccc; }
 .drop-zone-text { font-size: 12px; color: #ccc; text-align: center; padding: 0 12px; }
 
-/* Form footer */
-.form-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;
-}
-.btn-reset {
-    background: none;
-    border: none;
-    font-family: 'Roboto', sans-serif;
-    font-size: 13px;
-    color: #aaa;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0;
-    transition: color 0.2s;
-}
-.btn-reset:hover { color: var(--primary); }
 .btn-submit {
     padding: 11px 32px;
     background: linear-gradient(135deg, var(--dark), #2A4038);
@@ -1579,10 +1414,7 @@ select {
     .hero h1 { font-size: 34px; }
     .section-title { font-size: 26px; }
     .tipo-grid { grid-template-columns: 1fr 1fr; }
-    .form-grid { grid-template-columns: 1fr; }
-    .f { padding: 14px 0 !important; border-left: none !important; }
     .footer-bottom { flex-direction: column; gap: 6px; }
-    .form-wrap { padding: 24px 20px; }
 }
 
 /* ─────────────── WIZARD CARD */
