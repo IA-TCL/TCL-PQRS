@@ -46,8 +46,12 @@ async def submit_pqrs(
     if autorizacion != "si":
         return JSONResponse({"success": False, "message": "Debes aceptar la política de privacidad."}, status_code=400)
 
-    MAX_FILE_SIZE = 25 * 1024 * 1024  # 25 MB
+    TIPOS_PERMITIDOS = {'.pdf', '.doc', '.docx', '.jpg', '.jpeg', '.png'}
+    MAX_FILE_SIZE    = 25 * 1024 * 1024  # 25 MB
     if adjunto and adjunto.filename:
+        ext = os.path.splitext(adjunto.filename)[1].lower()
+        if ext not in TIPOS_PERMITIDOS:
+            return JSONResponse({"success": False, "message": "Tipo de archivo no permitido. Solo se aceptan PDF, Word e imágenes."}, status_code=400)
         file_bytes = await adjunto.read()
         if len(file_bytes) > MAX_FILE_SIZE:
             return JSONResponse({"success": False, "message": "El archivo adjunto no puede superar los 25 MB."}, status_code=400)
