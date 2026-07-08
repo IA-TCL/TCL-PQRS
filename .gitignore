@@ -4,3 +4,8 @@ config.php
 # Archivos subidos por usuarios
 uploads/*
 !uploads/.htaccess
+
+# Artefactos de pruebas locales
+.playwright-mcp/
+__pycache__/
+*.pyc
