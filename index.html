@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PQRS — TCL Asesores</title>
     <meta name="description" content="Canal oficial para peticiones, quejas, reclamos y sugerencias. Tu opinión es importante.">
-    <!-- FAVICON: reemplaza "Imagenes/favicon.png" con la ruta de tu ícono (32×32 px recomendado) -->
+    <meta property="og:title" content="PQRS — TCL Asesores">
+    <meta property="og:description" content="Radica tu petición, queja, reclamo, sugerencia o felicitación. Proceso guiado en 3 pasos.">
+    <meta property="og:url" content="https://tclasesores.com/pqrs/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tclasesores.com/pqrs/Imagenes/pqrs.png">
+    <meta name="twitter:card" content="summary_large_image">
     <!-- <link rel="icon" type="image/png" href="Imagenes/favicon.png"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
@@ -31,11 +36,6 @@
             </ul>
         </nav>
         <div class="header-actions">
-            <!-- Búsqueda -->
-            <button class="hdr-icon-btn" aria-label="Buscar">
-                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </button>
-            <span class="hdr-sep"></span>
             <!-- Contacto -->
             <div class="hdr-contact">
                 <div class="hdr-contact-icon">
@@ -205,10 +205,7 @@
         <!-- Header -->
         <div class="wz-head">
             <p class="wz-head-title" id="wz-head-title">Radica tu solicitud</p>
-            <p class="wz-head-sub">
-                Proceso guiado · 3 pasos
-                <span class="wz-badge">NUEVO</span>
-            </p>
+            <p class="wz-head-sub">Proceso guiado · 3 pasos</p>
         </div>
 
         <!-- Progress -->
@@ -256,7 +253,7 @@
                                 <div class="wz-field-label">Nombres <span class="wz-req">*</span></div>
                                 <p class="wz-hint">Nombres completos</p>
                                 <div class="input-wrap">
-                                    <input type="text" id="wz-nombres" name="nombres" required autocomplete="given-name">
+                                    <input type="text" id="wz-nombres" name="nombres" required autocomplete="given-name" maxlength="100">
                                     <span class="v-icon">✓</span>
                                 </div>
                             </div>
@@ -264,7 +261,7 @@
                                 <div class="wz-field-label">Apellidos <span class="wz-req">*</span></div>
                                 <p class="wz-hint">Apellidos completos</p>
                                 <div class="input-wrap">
-                                    <input type="text" id="wz-apellidos" name="apellidos" required autocomplete="family-name">
+                                    <input type="text" id="wz-apellidos" name="apellidos" required autocomplete="family-name" maxlength="100">
                                     <span class="v-icon">✓</span>
                                 </div>
                             </div>
@@ -282,7 +279,7 @@
                                 <div class="wz-field-label">Celular <span class="wz-req">*</span></div>
                                 <p class="wz-hint">Número de contacto</p>
                                 <div class="input-wrap">
-                                    <input type="tel" id="wz-celular" name="celular" required autocomplete="tel">
+                                    <input type="tel" id="wz-celular" name="celular" required autocomplete="tel" maxlength="15">
                                     <span class="v-icon">✓</span>
                                 </div>
                             </div>
@@ -400,7 +397,7 @@
                                 <span class="consent-check" aria-hidden="true">
                                     <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
                                 </span>
-                                <span class="consent-text">Acepto el tratamiento de mis datos personales conforme a la política de privacidad de TCL Asesores.</span>
+                                <span class="consent-text">Confirmo que la información proporcionada es verídica y autorizo su uso exclusivo para gestionar esta solicitud.</span>
                                 <select name="autorizacion" id="wz-autorizacion" required style="display:none">
                                     <option value=""></option>
                                     <option value="si">si</option>

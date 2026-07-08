@@ -1,0 +1,6 @@
+# Configuración sensible — nunca versionar
+config.php
+
+# Archivos subidos por usuarios
+uploads/*
+!uploads/.htaccess

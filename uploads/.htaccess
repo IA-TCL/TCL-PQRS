@@ -1,0 +1,8 @@
+# Bloquear ejecución de scripts en la carpeta de uploads (seguridad)
+Options -ExecCGI
+RemoveHandler .php .php3 .php4 .php5 .phtml .pl .py .jsp .sh
+AddType text/plain .php .php3 .php4 .php5 .phtml .pl .py .jsp .sh
+
+<FilesMatch "\.(php|php3|php4|php5|phtml|pl|py|jsp|sh)$">
+    Deny from all
+</FilesMatch>

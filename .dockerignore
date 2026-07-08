@@ -1,0 +1,9 @@
+.git
+.vscode
+.playwright-mcp
+uploads/
+Imagenes/
+index.html
+styles.css
+script.js
+*.md

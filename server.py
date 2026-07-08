@@ -20,7 +20,7 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://tclasesores.com"],
+    allow_origins=["https://tclasesores.com", "https://www.tclasesores.com"],
     allow_methods=["*"],
     allow_headers=["*"],
 )

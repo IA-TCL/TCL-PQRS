@@ -1,5 +1,5 @@
-// Pre-warm Render service on page load (free tier spins down after inactivity)
-fetch('https://tcl-pqrs.onrender.com/').catch(() => {});
+// Pre-warm Cloud Run service on page load
+fetch('https://tcl-pqrs-251034710055.us-central1.run.app/').catch(() => {});
 
 /* ── Constants ──────────────────────────────────── */
 const dotClassMap = {
@@ -286,13 +286,18 @@ wzForm.addEventListener('submit', async e => {
     wzSubmit.disabled = true;
     wzSubmit.innerHTML = '<span class="spin"></span>Enviando…';
     errorEl.classList.remove('show');
+    const ctrl = new AbortController();
+    const tid  = setTimeout(() => ctrl.abort(), 15000);
     try {
-        const res  = await fetch('https://tcl-pqrs.onrender.com/pqrs', { method: 'POST', body: new FormData(wzForm) });
+        const res  = await fetch('https://tcl-pqrs-251034710055.us-central1.run.app/pqrs', { method: 'POST', body: new FormData(wzForm), signal: ctrl.signal });
+        clearTimeout(tid);
         let json;
         try { json = await res.json(); } catch { json = {}; }
         if (res.ok && json.success) {
             clearDraft();
             showSuccessScreen(json.radicado || '');
+        } else if (res.status === 429) {
+            showError('Has superado el límite de solicitudes. Intenta de nuevo en una hora.');
         } else {
             const detail = json.message || (json.detail && json.detail[0] && json.detail[0].msg) || '';
             showError(detail || `Error del servidor (${res.status}). Intenta más tarde.`);
@@ -358,10 +363,14 @@ function resetWizard() {
     setSelectedCard('');
 
     wzCharCount.textContent = '0 / 700';
-    wzCharCount.classList.remove('warn', 'over');
+    wzCharCount.classList.remove('warn');
 
     wzAdjunto.value = '';
     renderWzFilePreview(null);
+
+    wzConsent.classList.remove('accepted');
+    wzAuthSelect.value = '';
+    wzConsent.setAttribute('aria-checked', false);
 
     if (currentStep !== 1) {
         panels.forEach((p, i) => p.classList.toggle('hidden', i !== 0));
@@ -379,7 +388,9 @@ function resetWizard() {
     document.querySelector('.wz-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-document.getElementById('wz-clear-btn').addEventListener('click', resetWizard);
+document.getElementById('wz-clear-btn').addEventListener('click', () => {
+    resetWizard();
+});
 
 /* ── Draft saving ───────────────────────────────── */
 const DRAFT_KEY    = 'pqrs_draft_wz';
@@ -425,7 +436,6 @@ function loadDraft() {
             const len = d['wz-descripcion'].length;
             wzCharCount.textContent = `${len} / 700`;
             wzCharCount.classList.toggle('warn', len > 560 && len <= 700);
-            wzCharCount.classList.remove('over');
         }
     } catch {}
 }
