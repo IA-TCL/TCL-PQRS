@@ -1,0 +1,2 @@
+# Bloquear todo acceso directo a esta carpeta (solo la lee submit.php)
+Require all denied

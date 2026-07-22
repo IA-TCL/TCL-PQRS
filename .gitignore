@@ -5,6 +5,10 @@ config.php
 uploads/*
 !uploads/.htaccess
 
+# Contadores de rate-limit (estado transitorio, no codigo)
+rate_limit/*
+!rate_limit/.htaccess
+
 # Artefactos de pruebas locales
 .playwright-mcp/
 __pycache__/
